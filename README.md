@@ -156,6 +156,7 @@ Reason Network 연결까지 모두 빼려면 `reason-network setup --remove`를 
 
 ```
 claude-codex-collab-install/
+├── LICENSE                     # MIT 라이선스
 ├── SKILL.md                    # 에이전트가 읽는 설치 절차
 ├── scripts/install.mjs         # 실제 설치 스크립트
 └── assets/
@@ -164,3 +165,9 @@ claude-codex-collab-install/
         ├── claude-rule.md      # Claude에 들어가는 협업 규칙
         └── codex-rule.md       # Codex에 들어가는 협업 규칙
 ```
+
+## 라이선스
+
+[MIT](LICENSE) © 2026 SoyLab.ai (dalkom)
+
+> 이 스킬은 Reason Machines, Anthropic, OpenAI와 관계없는 비공식 스킬입니다.
