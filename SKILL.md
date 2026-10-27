@@ -15,7 +15,7 @@ Reason Network는 에이전트끼리 메시지를 주고받는 통로(`list_team
 | --- | --- | --- |
 | 협업 규칙 | Claude `~/.claude/CLAUDE.md`, Codex `~/.codex/AGENTS.md` | `from` 주소로 `reply_to`를 붙여 답하고, 끝날 때까지 계속 주고받고, 끝낼 때 "협업 완료, 회신 불필요"를 밝힌다. 멈추는 조건(상대가 종료를 알림, 결과 합의, 사용자 결정 필요)도 정한다. |
 | 승인 창 없애기 | Claude `settings.json` 허용 목록, Codex `default_tools_approval_mode = "approve"` | 답장할 때마다 승인 창이 떠서 흐름이 끊기지 않게 한다. |
-| 응답 대기 시간 | Codex `tool_timeout_sec = 660` | 상대의 긴 작업을 기다리다 끊기지 않게 한다. |
+| 도구 시간 제한 | Codex `tool_timeout_sec = 660` | Reason Network setup의 기본값을 유지한다. `ask_user`처럼 사람의 답을 기다리는 도구가 끊기지 않게 하는 상한이며, 일반 메시지 전송은 즉시 끝난다. |
 | Claude → Codex 직접 호출 | Claude `codex` MCP | Reason Network 없이도 Claude가 Codex에 일을 맡기고, `session_id`로 같은 대화를 이어 간다. |
 | 양쪽 스킬 배치 | `~/.claude/skills`, `~/.codex/skills` | 어느 앱에서든 이 스킬을 다시 쓸 수 있다. |
 

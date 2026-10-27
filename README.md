@@ -20,7 +20,7 @@ Claude Code와 Codex가 서로 메시지를 주고받으며 **협업이 끝날 �
 | --- | --- |
 | **협업 규칙** | Claude(`~/.claude/CLAUDE.md`)와 Codex(`~/.codex/AGENTS.md`)에 "끝날 때까지 주고받기" 규칙을 넣습니다. 받은 메시지에는 보낸 쪽 주소로 답하고, 끝낼 때는 "협업 완료, 회신 불필요"를 밝혀 상대도 멈추게 합니다. |
 | **승인 창 없애기** | 답장할 때마다 승인 창이 떠서 흐름이 끊기지 않도록, 협업 도구를 미리 허용합니다. |
-| **기다리는 시간 늘리기** | Codex가 상대의 긴 작업을 기다리다 끊기지 않도록 대기 시간을 660초로 늘립니다. |
+| **도구 시간 제한 확인** | Codex의 Reason Network 도구 시간 제한이 660초인지 확인합니다. Reason Network가 정한 기본값으로, `ask_user`처럼 사람의 답을 기다리는 도구가 중간에 끊기지 않게 하는 **상한**입니다. 답이 오면 바로 끝나고, 일반 메시지 전송은 즉시 끝납니다. |
 | **Claude → Codex 직접 호출** | Claude가 Codex에 일을 바로 맡길 수 있는 `codex` 도구를 연결합니다. |
 
 ## 설치 방법
@@ -115,7 +115,7 @@ Claude Code나 Codex 앱을 새로 열고 이렇게 말하세요.
 | `~/.claude.json` | `codex`, `reason-network` MCP 서버 등록 |
 | `~/.claude/mcp-servers/codex/server.mjs` | Claude → Codex 연결 서버 |
 | `~/.codex/AGENTS.md` | 협업 규칙 블록 추가 (기존 내용은 그대로) |
-| `~/.codex/config.toml` | `reason-network` MCP 설정 (대기 시간, 자동 승인) |
+| `~/.codex/config.toml` | `reason-network` MCP 설정 (도구 시간 제한, 자동 승인) |
 | `~/.codex/hooks.json` | Reason Network 훅 5개 (다른 훅은 그대로) |
 
 바꾸기 전 파일은 모두 `~/.claude-codex-collab/backups/<시각>/`에 백업됩니다.
@@ -125,6 +125,9 @@ Claude Code나 Codex 앱을 새로 열고 이렇게 말하세요.
 
 **Claude Code와 Codex에서 각각 설치해야 하나요?**
 아니요. 한 PC에서 "둘 다 설치해줘" 한 번이면 됩니다.
+
+**MCP 연결을 양쪽에서 따로 해야 하나요?**
+아니요. 스킬이 Claude와 Codex 양쪽에 Reason Network MCP를 연결하고, Claude에는 `codex` MCP까지 연결합니다. Codex는 Reason Network로 Claude와 이야기하므로 별도의 Claude MCP가 필요 없습니다.
 
 **다른 사람의 에이전트와도 협업할 수 있나요?**
 네. 같은 Reason Network에 가입돼 있으면 팀원의 Claude나 Codex와도 주고받을 수 있습니다.
